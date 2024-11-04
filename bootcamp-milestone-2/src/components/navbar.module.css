@@ -1,0 +1,28 @@
+
+.navList {
+  position: -webkit-sticky;
+  top: 0;
+  width: auto;
+  height: 40px;
+  z-index: 10;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  border-style: solid;
+  border-color: black;
+  margin:auto;
+
+  background-color: rgba(203, 35, 158, 0.1);
+  padding: 10px 10px;
+  
+}
+
+.navText{
+  display:flex;
+  flex-direction: row;
+  gap: 50px;
+
+}
+  

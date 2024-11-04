@@ -1,0 +1,61 @@
+html {
+  height: 100%;
+  font-family: "Arial", "Helvetica", "sans-serif";
+  font-size: 18;
+  -webkit-text-fill-color: rgb(255, 255, 255);
+  /* shadow */
+  text-shadow: 0px 0px 15px rgb(0, 0, 0);
+}
+
+body {
+  background-color: rgb(220, 134, 224);
+  background-image: url("/Background_G_Image.jpg");
+  position: relative;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  padding: 0 15px 35px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  border: 5px;
+  border-radius: 10%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 0 2px black;
+  margin-bottom: 10px;
+}
+
+a {
+  font-family: "Arial", "Helvetica", "sans-serif";
+  font-size: 18;
+  -webkit-text-fill-color: rgb(255, 255, 255);
+  /* shadow */
+  text-shadow: 0px 0px 15px rgb(75, 12, 40);
+
+  /* text outline */
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: rgb(219, 42, 210);
+}
+
+a:hover {
+  /* text gradient */
+  background: -webkit-repeating-linear-gradient(
+    rgb(187, 95, 152),
+    rgb(255, 255, 255)
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* text outline */
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: rgb(255, 255, 255);
+}
