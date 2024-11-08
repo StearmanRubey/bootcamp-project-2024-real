@@ -3,6 +3,7 @@ import { Fragment_Mono, Inter } from "next/font/google"; // You can change the f
 import "./globals.css";
 import localFont from "next/font/local";
 import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 import Homepage from "./page";
 import { Fragment } from "react";
 
@@ -22,8 +23,8 @@ const geistMono = localFont({
 //
 
 export const metadata: Metadata = {
-  title: "[name] Personal Website",
-  description: "A personal website for [name].",
+  title: "Stearman's Personal Website",
+  description: "A personal website for Stearman.",
 };
 
 export default function RootLayout({
@@ -33,9 +34,14 @@ export default function RootLayout({
 }>) {
   // returns boilerplate
   return (
-    <Fragment>
+    <html lang="en">
+      <body>
+      <Fragment>
       <Navbar />
       {children}
-    </Fragment>
+      <Footer />
+      </Fragment>
+      </body>
+    </html>
   );
 }
