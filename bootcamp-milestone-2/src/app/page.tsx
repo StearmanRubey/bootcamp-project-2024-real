@@ -1,19 +1,9 @@
 import React from "react";
 import blogs from '@/app/blogData';
 import BlogPreview from '@/components/blogPreview';
-import RootLayout from "./layout";
 
 export default function Homepage() {
     return (
-        <html>
-            <head>
-                <title>
-                    Index
-                </title>
-                <link rel="stylesheet" type="text/css" href="styles.css" />
-            </head>
-
-            <body>
                 <main>
                     <h1 className="page-title">My Index!</h1>
                     <div className="about">
@@ -32,6 +22,7 @@ export default function Homepage() {
                             </p>
                         </div>
                     </div>
+                    <h1> Blogs </h1>
                     <div>
                         {blogs.map(blog => 
                             <BlogPreview // This is how we call the component
@@ -48,12 +39,5 @@ export default function Homepage() {
                     </div>
                 </main>
 
-                
-                
-                <footer>
-                    © 2024 Stearman's Website | All Rights Reserved
-                </footer>
-            </body>
-        </html>
     )
 }
