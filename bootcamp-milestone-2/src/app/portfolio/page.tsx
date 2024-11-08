@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 
 export default function Portfolio() {
@@ -7,9 +8,9 @@ export default function Portfolio() {
         <main>
             <h1 className="page-title">My Portfolio!</h1>
             <div className="project">
-                <a href="index.html">
+                <Link href="/">
                     <img src = "Chrome_Image.png" width="700" height="394" alt="Website Image"></img>
-                </a>
+                </Link>
                 
                 <div className="project-details">
                     <p className="project name">
