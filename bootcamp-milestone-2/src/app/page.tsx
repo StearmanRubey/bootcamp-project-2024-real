@@ -21,9 +21,7 @@ export default function Homepage() {
                                 I'm making this website as part of the <em>Hack4Impact</em> starter pack, and am learning about git, HTML, CSS, and more!
                             </p>
                         </div>
-                    </div>
                     <h1> Blogs </h1>
-                    <div>
                         {blogs.map(blog => 
                             <BlogPreview // This is how we call the component
 
