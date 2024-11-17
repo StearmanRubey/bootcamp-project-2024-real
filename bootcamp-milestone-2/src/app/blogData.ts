@@ -1,3 +1,4 @@
+/*
 export interface Blog { // type also works
     title: string //Title of blog
     date: string //Date of blog
@@ -38,3 +39,4 @@ const blogs: Blog[] = [
 ];
 
 export default blogs; // This will allow us to access this data anywhere!
+*/
