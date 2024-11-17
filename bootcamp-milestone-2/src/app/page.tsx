@@ -1,8 +1,30 @@
 import React from "react";
-import blogs from '@/app/blogData';
+//import blogs from '@/app/blogData';
 import BlogPreview from '@/components/blogPreview';
+import Blog from "@/database/blogSchema";
+import connectDB from "@/database/db";
+
+async function getBlogs(){
+	await connectDB() // function from db.ts before
+
+	try {
+			// query for all blogs and sort by date
+	    const blogs = await Blog.find().sort({ date: -1 }).orFail()
+			// send a response as the blogs as the message
+	    return blogs
+	} catch (err) {
+	    return null
+	}
+}
+
+const blogs = await getBlogs();
+
+
 
 export default function Homepage() {
+    if(!blogs) {
+        return <p> blogs is null</p>
+    }
     return (
                 <main>
                     <h1 className="page-title">My Index!</h1>
@@ -23,19 +45,22 @@ export default function Homepage() {
                         </div>
                     <h1> Blogs </h1>
                         {blogs.map(blog => 
+
+                            
                             <BlogPreview // This is how we call the component
 
                             title={blog.title}
                             description={blog.description}
-                            image={blog.image}
                             date={blog.date}
                             imageAlt={blog.imageAlt}
                             slug={blog.slug}
+                            content={blog.content}
+                            image={blog.image}
 
                             />
                         )}
+
                     </div>
                 </main>
-
     )
 }
