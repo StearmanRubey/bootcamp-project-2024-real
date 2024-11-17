@@ -1,31 +1,46 @@
 import React from "react";
-import Link from "next/link";
+//import blogs from '@/app/blogData';
+import PortfolioPreview from '@/components/portfolioPreview';
+import Portfolio from "@/database/portfolioSchema";
+import connectDB from "@/database/db";
 
+async function getPortfolios(){
+	await connectDB() // function from db.ts before
 
-export default function Portfolio() {
+	try {
+			// query for all blogs and sort by date
+	    const portfolios = await Portfolio.find().sort({ date: "descending" }).orFail()
+			// send a response as the blogs as the message
+	    return portfolios
+	} catch (err) {
+	    return null
+	}
+}
 
+const portfolios = await getPortfolios();
+
+export default function PortfolioPage() {
+
+    if(!portfolios) {
+        return <p> portfolios are null</p>
+    }
     return (
         <main>
-            <h1 className="page-title">My Portfolio!</h1>
-            <div className="project">
-                <Link href="/">
-                    <img src = "Chrome_Image.png" width="700" height="394" alt="Website Image"></img>
-                </Link>
-                
-                <div className="project-details">
-                    <p className="project name">
-                        <strong>Stearman's Cool Website!</strong>
-                    </p>
+            <h1> My Portfolio! </h1>
+                {portfolios.map(portfolio => 
 
-                    <p className="project-description">
-                        A website I made for the <em>Hack4Impact</em> starter pack!
-                    </p>
+                    
+                    <PortfolioPreview // This is how we call the component
 
-                    <p>
-                        <a href="/">Learn More</a>
-                    </p>
-                </div>
+                    title={portfolio.title}
+                    description={portfolio.description}
+                    imageAlt={portfolio.imageAlt}
+                    slug={portfolio.slug}
+                    image={portfolio.image}
 
-            </div> 
+                    />
+                )}
+            
+
         </main>
     )}
