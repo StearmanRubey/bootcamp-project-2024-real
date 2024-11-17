@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import connectDB from "@/database/db";
+import connectDB from "@/database/db"
 import blogSchema from "@/database/blogSchema"
 
 type IParams = {
@@ -12,8 +12,6 @@ type IParams = {
 export async function GET(req: NextRequest, { params }: IParams) {
     await connectDB() // function from db.ts before
 		const { slug } = params // another destructure
-
-        console.log("hello")
 
 	   try {
 	        const blog = await blogSchema.findOne({ slug }).orFail()

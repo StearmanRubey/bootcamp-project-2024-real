@@ -1,5 +1,4 @@
 import mongoose, { Schema } from "mongoose";
-import connectDB from "./db";
 
 // typescript type (can also be an interface)
 type Blog = {
