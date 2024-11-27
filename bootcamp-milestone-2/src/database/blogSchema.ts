@@ -27,13 +27,13 @@ const blogSchema = new Schema<Blog>({
   imageAlt: { type: String, required: true },
   description: { type: String, required: true },
   content: { type: String, required: true },
-  comments:
-  [{
-    user: {type: String, required: true},
-    comment: {type: String, required: true},
-    time: {type: Date, required: false, default: new Date()}
-  }]
-
+  comments: [
+    {
+      user: { type: String, required: true },
+      comment: { type: String, required: true },
+      time: { type: Date, required: false, default: new Date() },
+    },
+  ]
 });
 
 // defining the collection and model
