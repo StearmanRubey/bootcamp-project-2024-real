@@ -1,6 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
-import Link from "next/link";
 import BlogPage from '@/components/blogPage';
 
 type Props = {
@@ -10,7 +8,7 @@ type Props = {
 async function getBlog(slug: string) {
 	try {
 		// This fetches the blog from an api endpoint that would GET the blog
-		const res = await fetch(`http://localhost:3000/api/blog/${slug}`, {
+		const res = await fetch(`http://localhost:3000/api/Blogs/${slug}`, {
 			cache: "no-store",	
 		})
 		// This checks that the GET request was successful
@@ -29,32 +27,20 @@ async function getBlog(slug: string) {
 }
 
 export default async function Blog({params}: Props) {
-
-    const { slug } = params;
+	const slug = params.slug;
 	const blog = await getBlog(slug);
-
-	console.log(slug)
-
-	if (!blog) {
-		return <div> Blog isn't defined </div>
-	}
-
-    const renderImage = typeof blog.image === "string" && blog.image !== "";
-
-    return (
+	
+	return(
 		<BlogPage
 
-			title={blog.title}
-			description={blog.description}
-			date={blog.date}
-			imageAlt={blog.imageAlt}
-			slug={blog.slug}
-			content={blog.content}
-			image={blog.image}
+		title={blog.title}
+		description={blog.description}
+		date={blog.date}
+		imageAlt={blog.imageAlt}
+		slug={blog.slug}
+		content={blog.content}
+		image={blog.image}
 
-        />
-
-    );
-	
-	
+		/>
+	)
 }

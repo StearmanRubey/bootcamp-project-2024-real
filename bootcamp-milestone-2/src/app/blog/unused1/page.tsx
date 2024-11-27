@@ -1,3 +1,5 @@
+/*
+
 import React from "react";
 
 
@@ -22,3 +24,5 @@ export default function Blog1() {
         </div>
       </main>
     )}
+
+*/
