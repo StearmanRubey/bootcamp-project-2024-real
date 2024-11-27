@@ -1,0 +1,17 @@
+.div{
+    background-color: rgba(255, 192, 203, 0.5);
+    background-blend-mode: color-burn;
+    outline: auto;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    
+    text-align: center;
+
+    
+}
