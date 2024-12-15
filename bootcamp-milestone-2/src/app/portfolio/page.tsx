@@ -1,5 +1,4 @@
 import React from "react";
-//import blogs from '@/app/blogData';
 import PortfolioPreview from '@/components/portfolioPreview';
 import Portfolio from "@/database/portfolioSchema";
 import connectDB from "@/database/db";
@@ -9,7 +8,7 @@ async function getPortfolios(){
 
 	try {
 			// query for all blogs and sort by date
-	    const portfolios = await Portfolio.find().sort({ date: "descending" }).orFail()
+	    const portfolios = await Portfolio.find().sort({ date: "descending" }).lean().orFail();
 			// send a response as the blogs as the message
 	    return portfolios
 	} catch (err) {
@@ -29,7 +28,6 @@ export default function PortfolioPage() {
             <h1> My Portfolio! </h1>
                 {portfolios.map(portfolio => 
 
-                    
                     <PortfolioPreview // This is how we call the component
 
                     title={portfolio.title}
@@ -37,7 +35,7 @@ export default function PortfolioPage() {
                     imageAlt={portfolio.imageAlt}
                     slug={portfolio.slug}
                     image={portfolio.image}
-
+                    comments={portfolio.comments || []}
                     />
                 )}
             

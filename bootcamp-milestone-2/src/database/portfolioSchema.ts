@@ -1,11 +1,18 @@
 import mongoose, { Schema } from "mongoose";
 
+export interface IComment {
+  user: string;
+  comment: string;
+  time: Date;
+}
+
 type Portfolio = {
   title: string;
   slug: string;
   image: string;
   imageAlt: string;
   description: string;
+  comments: IComment[];
 };
 
 // mongoose schema
@@ -15,6 +22,13 @@ const portfolioSchema = new Schema<Portfolio>({
   image: { type: String, required: true },
   imageAlt: { type: String, required: true },
   description: { type: String, required: true },
+  comments: [
+    {
+      user: { type: String, required: true },
+      comment: { type: String, required: true },
+      time: { type: Date, required: false, default: new Date() },
+    },
+  ]
 });
 
 // defining the collection and model
