@@ -2,12 +2,6 @@ import { NextRequest, NextResponse } from 'next/server'
 import connectDB from "@/database/db"
 import Portfolio from "@/database/portfolioSchema"
 
-type IParams = {
-		params: {
-			slug: string
-		}
-}
-
 export async function POST(req: NextRequest) {
 
     interface CommentInterface {
@@ -41,12 +35,12 @@ export async function POST(req: NextRequest) {
             {error: "could not find Portfolio"}
         )
     }
-
-    let tempComments = newPortfolio.get("comments")
     
     //I need to use this strange workaround because for some reason
     //newPortfolio.comments is undefined but newPortfolio.get("comments")
     //works fine. So that's the reason for the strange code.
+
+    const tempComments = newPortfolio.get("comments")
 
     tempComments.push(pushComment);
 

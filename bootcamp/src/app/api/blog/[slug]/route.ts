@@ -16,6 +16,7 @@ export async function GET(req: NextRequest, { params }: IParams) {
 	        const blog = await Blog.findOne({ slug }).orFail()
 	        return NextResponse.json(blog)
 	    } catch (err) {
+            console.log(err)
 	        return NextResponse.json('Blog not found.', { status: 404 })
 	    }
 }

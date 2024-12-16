@@ -1,11 +1,12 @@
 import React from "react";
 import Comment from "@/components/comment";
 import Blog, { IComment } from "@/database/blogSchema";
+import Image from "next/image";
 
 async function getBlog(slug: string): Promise<Blog | null> {
   try {
     // This fetches the blog from an api endpoint that would GET the blog
-    const res = await fetch(`http://localhost:3000/api/Blogs/${slug}`, {
+    const res = await fetch(`http://localhost:3000/api/blog/${slug}`, {
       cache: "no-store",
     });
     // This checks that the GET request was successful
@@ -17,9 +18,6 @@ async function getBlog(slug: string): Promise<Blog | null> {
   } catch (err: unknown) {
     console.log(`error: ${err}`);
     return null;
-    // `` are a special way of allowing JS inside a string
-    // Instead of "error: " + err, we can just do the above
-    // it is simular to formated strings in python --> f"{err}"
   }
 }
 
@@ -39,7 +37,7 @@ export default async function BlogPage({ slug }: BlogSlug) {
   if (blog.comments) {
     blog.comments.sort((a, b) => {
       //not sure why this is needed as all of my times are Dates
-      //but otherwise this gives me an error
+      //but otherwise I get an error
       const aTime = new Date(a.time);
       const bTime = new Date(b.time);
 
@@ -56,12 +54,12 @@ export default async function BlogPage({ slug }: BlogSlug) {
           <p>{newDate.toDateString()}</p>
         </div>
         <div className="blog-image">
-          <img
+          <Image
             src={blog.image}
             width="700"
             height="394"
             alt={blog.imageAlt}
-          ></img>
+          />
         </div>
         <div className="blog-content">
           <p>{blog.content}</p>

@@ -12,6 +12,7 @@ async function getPortfolios(){
 			// send a response as the blogs as the message
 	    return portfolios
 	} catch (err) {
+        console.log(err)
 	    return null
 	}
 }
@@ -26,10 +27,11 @@ export default function PortfolioPage() {
     return (
         <main>
             <h1> My Portfolio! </h1>
-                {portfolios.map(portfolio => 
+                {portfolios.map((portfolio, index) => (
 
                     <PortfolioPreview // This is how we call the component
 
+                    key={portfolio._id}
                     title={portfolio.title}
                     description={portfolio.description}
                     imageAlt={portfolio.imageAlt}
@@ -37,7 +39,7 @@ export default function PortfolioPage() {
                     image={portfolio.image}
                     comments={portfolio.comments || []}
                     />
-                )}
+                ))}
             
 
         </main>
