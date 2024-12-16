@@ -1,89 +1,140 @@
 html {
-  height: 100%;
-  font-family: "Arial", "Helvetica", "sans-serif";
-  font-size: 18;
-  -webkit-text-fill-color: rgb(255, 255, 255);
-  /* shadow */
-  text-shadow: 0px 0px 15px rgb(0, 0, 0);
+height: 100%;
+font-family: "Arial", "Helvetica", "sans-serif";
+font-size: 18;
+-webkit-text-fill-color: rgb(255, 255, 255);
+/* shadow */
+text-shadow: 0px 0px 15px rgb(0, 0, 0);
 }
 
 body {
-  background-color: rgb(220, 134, 224);
-  background-image: url("/Background_G_Image.jpg");
-  background-repeat: repeat-y;
-  position: relative;
-  min-height: 100vh;
-  padding: 0;
-  margin: 0;
+background-color: rgb(220, 134, 224);
+background-image: url("/Background_G_Image.jpg");
+background-repeat: repeat-y;
+position: relative;
+min-height: 100vh;
+padding: 0;
+margin: 0;
 }
 
 main {
-  padding: 0 15px 35px 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+padding: 0 15px 35px 15px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 }
 
 img {
-  border: 5px;
-  border-radius: 10%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 0 0 2px black;
-  margin-bottom: auto;
-  margin-top: 30px;
+border: 5px;
+border-radius: 10%;
+display: block;
+margin-left: auto;
+margin-right: auto;
+box-shadow: 0 0 0 2px black;
+margin-bottom: auto;
+margin-top: 30px;
 }
 
 a {
-  font-family: "Arial", "Helvetica", "sans-serif";
-  font-size: 18;
-  -webkit-text-fill-color: rgb(255, 255, 255);
-  /* shadow */
-  text-shadow: 0px 0px 15px rgb(75, 12, 40);
+font-family: "Arial", "Helvetica", "sans-serif";
+font-size: 18;
+-webkit-text-fill-color: rgb(255, 255, 255);
+/* shadow */
+text-shadow: 0px 0px 15px rgb(75, 12, 40);
 
-  /* text outline */
-  -webkit-text-stroke-width: 0.5px;
-  -webkit-text-stroke-color: rgb(219, 42, 210);
+/* text outline */
+-webkit-text-stroke-width: 0.5px;
+-webkit-text-stroke-color: rgb(219, 42, 210);
 }
 
 a:hover {
-  /* text gradient */
-  background: -webkit-repeating-linear-gradient(
-    rgb(187, 95, 152),
-    rgb(255, 255, 255)
-  );
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* text gradient */
+background: -webkit-repeating-linear-gradient(
+  rgb(187, 95, 152),
+  rgb(255, 255, 255)
+);
+background-clip: text;
+-webkit-text-fill-color: transparent;
 
-  /* text outline */
-  -webkit-text-stroke-color: rgb(255, 255, 255);
+/* text outline */
+-webkit-text-stroke-color: rgb(255, 255, 255);
 }
 
 p{
-  text-align: center;
-  max-width: 700px;
+text-align: center;
+max-width: 700px;
 }
 
 h1 {
-  font-style: bold;
+font-style: bold;
 
-  margin-left: 5px;
+margin-left: 5px;
 
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  /* text gradient */
-  background: -webkit-repeating-linear-gradient(
-    rgb(255, 196, 220),
-    rgb(255, 0, 230)
-  );
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+/* text gradient */
+background: -webkit-repeating-linear-gradient(
+  rgb(255, 196, 220),
+  rgb(255, 0, 230)
+);
+background-clip: text;
+-webkit-text-fill-color: transparent;
 
-  /* text outline */
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: rgb(243, 215, 242);
-  /* shadow */
-  text-shadow: 0px 0px 15px rgb(160, 90, 214);
+/* text outline */
+-webkit-text-stroke-width: 1px;
+-webkit-text-stroke-color: rgb(243, 215, 242);
+/* shadow */
+text-shadow: 0px 0px 15px rgb(160, 90, 214);
+}
+
+
+
+/* all for contact page*/
+#contact-form {
+    font-family: Arial, sans-serif;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #e05c7d44;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#contact-form label {
+    font-weight: bold;
+}
+
+#contact-form input,
+#contact-form textarea {
+   -webkit-text-fill-color: rgb(0, 0, 0);
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#contact-form textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+#contact-form button {
+    background-color: #b65fb8;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#contact-form button:hover {
+    background-color: #9c519d;
 }
