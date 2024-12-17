@@ -1,32 +1,43 @@
-import React from "react";
+"use client";
+
+import React, {useState, useEffect} from "react";
 import Comment from "@/components/comment";
 import Blog, { IComment } from "@/database/blogSchema";
 import Image from "next/image";
-
-async function getBlog(slug: string): Promise<Blog | null> {
-  try {
-    // This fetches the blog from an api endpoint that would GET the blog
-    const res = await fetch(`http://localhost:3000/api/blog/${slug}`, {
-      cache: "no-store",
-    });
-    // This checks that the GET request was successful
-    if (!res.ok) {
-      throw new Error("Failed to fetch blog");
-    }
-
-    return res.json();
-  } catch (err: unknown) {
-    console.log(`error: ${err}`);
-    return null;
-  }
-}
+import BlogCommentForm from "@/components/blogCommentForm"
 
 type BlogSlug = {
   slug: string;
 };
 
-export default async function BlogPage({ slug }: BlogSlug) {
-  const blog = await getBlog(slug);
+export default function BlogPage({ slug }: BlogSlug) {
+
+  const [blog, setBlog] = useState<Blog | null>(null);
+  const [loading, setLoading] = useState(true)
+
+
+  const fetchBlog = async () => {
+    try {
+      const res = await fetch(`/api/blog/${slug}`, {cache: "no-store"})
+      if (!res.ok) throw new Error("fetch failed");
+      const data: Blog = await res.json();
+      setBlog(data);
+    } catch(err) {
+      console.error("Error", err)
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {fetchBlog();}, [slug])
+
+  const refreshSubmit = () => {
+    fetchBlog()
+  }
+
+  if(loading) {
+    return <div>Blog is loading</div>
+  }
 
   if (!blog) {
     return <div>Blog is null</div>;
@@ -66,6 +77,8 @@ export default async function BlogPage({ slug }: BlogSlug) {
         </div>
       </div>
 
+      <BlogCommentForm slug={slug} onSubmit={refreshSubmit}/>
+
       <h3>Comments</h3>
 
       <div className="comments">
@@ -79,6 +92,7 @@ export default async function BlogPage({ slug }: BlogSlug) {
           </div>
         )}
       </div>
+      
     </main>
   );
 }

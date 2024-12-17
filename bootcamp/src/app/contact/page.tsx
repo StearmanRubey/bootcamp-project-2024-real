@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser"
-
+import style from "@/components/userField.module.css"
 
 export default function Contact() {
 
@@ -44,7 +44,7 @@ export default function Contact() {
     };
     
     return (
-        <main>
+        <main className = {style.form}>
             <h1 className="page-title">Contact Me!</h1>
 
             <form id="contact-form" onSubmit = {handleSubmit}>
@@ -60,11 +60,12 @@ export default function Contact() {
                 <textarea id = "message" value = {formData.message} onChange = {handleInputChange} required />
 
 
-                <button type = "submit">Submit</button>
+                <div className = {style.buttonField}>
+                    <button type = "submit"> Submit </button>
+                </div>
             </form>
 
-            {status && <p>{status}</p>}
+            {status && <p className = {style.status}>{status}</p>}
         </main>
-
     );
 }

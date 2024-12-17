@@ -2,10 +2,22 @@ import { NextRequest, NextResponse } from 'next/server'
 import connectDB from "@/database/db"
 import Portfolio from "@/database/portfolioSchema"
 
+export async function GET(req: NextRequest) {
+    await connectDB() // function from db.ts before
+    const title = decodeURIComponent(req.nextUrl.pathname.split('/')[3])
+
+    try {
+        const blog = await Portfolio.findOne({ title }).orFail()
+        return NextResponse.json(blog)
+    } catch (err) {
+        console.log(err)
+        return NextResponse.json('Portfolio not found.', { status: 404 })
+    }
+}
+
 export async function POST(req: NextRequest) {
 
     interface CommentInterface {
-        title: string //used to identify which portfolio preview this is going under
         user: string
         comment: string
     }
@@ -17,9 +29,9 @@ export async function POST(req: NextRequest) {
         const body = await req.json() as Partial<CommentInterface>
 
         // validate body
-        if (!body.title || !body.user || !body.comment) {
+        if ( !body.user || !body.comment) {
             return NextResponse.json(
-                {error: "title, user and comment required"}
+                {error: "user and comment required"}
             )
         }
 
@@ -29,8 +41,10 @@ export async function POST(req: NextRequest) {
             time: new Date()
         }
 
+        const title = decodeURIComponent(req.nextUrl.pathname.split('/')[3])
+
         // push comment object to document
-        const newPortfolio = await Portfolio.findOne({title: body.title})
+        const newPortfolio = await Portfolio.findOne({title: title})
 
         if (!newPortfolio){
             return NextResponse.json(

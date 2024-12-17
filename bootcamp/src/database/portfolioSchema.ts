@@ -1,6 +1,6 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 
-export interface IComment {
+export interface IComment extends Document {
   user: string;
   comment: string;
   time: Date;
