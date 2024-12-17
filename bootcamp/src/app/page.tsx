@@ -4,6 +4,7 @@ import Blog from "@/database/blogSchema";
 import connectDB from "@/database/db";
 import Image from "next/image";
 
+export const dynamic = 'force-dynamic'
 
 async function getBlogs(){
 	await connectDB() // function from db.ts before

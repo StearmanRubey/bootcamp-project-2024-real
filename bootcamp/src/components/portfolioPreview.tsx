@@ -4,6 +4,8 @@ import Portfolio, {IComment} from "@/database/portfolioSchema";
 import Image from 'next/image';
 import Link from "next/link";
 
+export const dynamic = 'force-dynamic'
+
 export default function PortfoiloPreview(props: Portfolio) {
 
   const renderImage = typeof props.image === "string" && props.image !== "";

@@ -3,6 +3,8 @@ import PortfolioPreview from '@/components/portfolioPreview';
 import Portfolio from "@/database/portfolioSchema";
 import connectDB from "@/database/db";
 
+export const dynamic = 'force-dynamic'
+
 async function getPortfolios(){
 	await connectDB() // function from db.ts before
 
@@ -30,8 +32,8 @@ export default function PortfolioPage() {
                 {portfolios.map((portfolio, index) => (
 
                     <PortfolioPreview // This is how we call the component
-
-                    key={portfolio._id}
+                    
+                    key = {index}
                     title={portfolio.title}
                     description={portfolio.description}
                     imageAlt={portfolio.imageAlt}

@@ -29,36 +29,42 @@ export async function POST(req: NextRequest) {
     }
 
 
+    try{
+        await connectDB()
+        const body = await req.json() as Partial<CommentInterface>
+        const BlogSlug = req.nextUrl.pathname.split('/')[3]
 
-    await connectDB()
-	const body = await req.json() as Partial<CommentInterface>
-	const BlogSlug = req.nextUrl.pathname.split('/')[3]
+        // validate body
+        if (!body.user || !body.comment) {
+            return NextResponse.json(
+                {error: "user and comment required"}
+            )
+        }
 
-	// validate body
-	if (!body.user || !body.comment) {
+        const pushComment = {
+            user: body.user,
+            comment: body.comment,
+            time: new Date()
+        }
+        
+        // push comment object to document
+        const newBlog = await Blog.findOne({slug: BlogSlug})
+
+        if (!newBlog){
+            return NextResponse.json(
+                {error: "could not find blog"}
+            )
+        }
+
+        newBlog.comments.push(pushComment);
+
+        await newBlog.save()
+
+        return NextResponse.json({message: "Comment Added!"})
+        
+    } catch (err) {
         return NextResponse.json(
-            {error: "user and comment required"}
-        )
-	}
-
-    const pushComment = {
-        user: body.user,
-        comment: body.comment,
-        time: new Date()
-    }
-	
-	// push comment object to document
-    const newBlog = await Blog.findOne({slug: BlogSlug})
-
-    if (!newBlog){
-        return NextResponse.json(
-            {error: "could not find blog"}
+            {error: "An error occurred"}
         )
     }
-
-	newBlog.comments.push(pushComment);
-
-    await newBlog.save()
-
-	return NextResponse.json({message: "Comment Added!"})
 }
