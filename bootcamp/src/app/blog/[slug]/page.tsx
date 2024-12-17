@@ -7,9 +7,9 @@ type Props = {
     params: { slug: string }
 }
 
-export default function Blog({ params }: Props) {
+export default async function Blog({ params }: Props) {
 
-    const {slug} = params;
+    const {slug} = await params;
 
 	return <BlogPage slug={slug}/>
 }
