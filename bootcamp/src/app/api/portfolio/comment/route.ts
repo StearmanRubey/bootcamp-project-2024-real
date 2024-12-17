@@ -55,6 +55,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({message: "Comment Added!"})
 
     } catch (err) {
+        console.log(err)
         return NextResponse.json(
             {error: "An error occurred"}
         )
