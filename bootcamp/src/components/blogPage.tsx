@@ -29,7 +29,7 @@ export default function BlogPage({ slug }: BlogSlug) {
     }
   }
 
-  useEffect(() => {fetchBlog();}, [slug])
+  useEffect(() => {fetchBlog();}, [slug, fetchBlog])
 
   const refreshSubmit = () => {
     fetchBlog()

@@ -28,6 +28,7 @@ export default function PortfolioPage() {
                 {portfolios.map((portfolio, index) => (
 
                     <PortfolioPreview // This is how we call the component
+                    key = {index}
                     title = {portfolio.title as string}
                     />
                 ))}
