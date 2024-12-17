@@ -2,10 +2,9 @@ import { NextRequest, NextResponse } from 'next/server'
 import connectDB from "@/database/db"
 import Blog from "@/database/blogSchema"
 
-// If { params } looks confusing, check the note below this code block
-export async function GET(req: NextRequest, { params }: {params: {slug: string}}) {
+export async function GET(req: NextRequest) {
     await connectDB() // function from db.ts before
-		const { slug } = await params // another destructure
+		const slug = req.nextUrl.pathname.split('/')[3]
 
 	   try {
 	        const blog = await Blog.findOne({ slug }).orFail()
