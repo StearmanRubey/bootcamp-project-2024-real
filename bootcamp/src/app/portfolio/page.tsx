@@ -3,7 +3,7 @@ import PortfolioPreview from '@/components/portfolioPreview';
 import Portfolio from "@/database/portfolioSchema";
 import connectDB from "@/database/db";
 
-export async function getPortfolios(){
+ async function getPortfolios(){
 	await connectDB() // function from db.ts before
 
 	try {
