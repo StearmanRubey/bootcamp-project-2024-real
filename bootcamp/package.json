@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "dotenv": "^16.4.7",
     "mongoose": "*",
     "next": "15.0.1",
     "react": "19.0.0-rc-69d4b800-20241021",
