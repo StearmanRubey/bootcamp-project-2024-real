@@ -31,7 +31,7 @@ export default function PortfoiloPreview({title}: TitleProp) {
         }
       }
 
-    useEffect(() => {fetchPortfolio()}, [title, fetchPortfolio]);
+    useEffect(() => {fetchPortfolio()}, [title]);
 
     const refreshSubmit = () => {
         fetchPortfolio()
